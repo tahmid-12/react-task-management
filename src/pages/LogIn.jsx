@@ -1,0 +1,63 @@
+import { useState } from "react";
+
+const LogIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ email, password, rememberMe });
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg space-y-6"
+      >
+        <h2 className="text-2xl font-bold text-center">Log In</h2>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600"
+        >
+          Login
+        </button>
+
+        <div className="flex flex-col sm:flex-row justify-between items-center sm:space-x-4">
+
+          <label className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            />
+            <span className="text-gray-700">Remember Me</span>
+          </label>
+
+
+          <a href="#" className="text-blue-500 hover:underline mt-4 sm:mt-0">
+            Don’t have an account? Sign Up
+          </a>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default LogIn;
