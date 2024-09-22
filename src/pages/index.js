@@ -3,7 +3,8 @@ import SignUp from "./SignUp";
 import Tasks from "./tasks";
 import Dashboard from "./Dashboard";
 import Settings from "./Settings";
-import Create from "./Create";
+import Details from "./Details";
+import Edit from "./Edit";
 
 export default{
     LogIn,
@@ -11,5 +12,6 @@ export default{
     Tasks,
     Dashboard,
     Settings,
-    Create
+    Details,
+    Edit
 }

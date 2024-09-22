@@ -11,7 +11,8 @@ import SignUp from './pages/SignUp.jsx';
 import Tasks from './pages/tasks.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Settings from './pages/Settings.jsx';
-import Create from './pages/Create.jsx';
+import Details from './pages/Details.jsx';
+import Edit from './pages/Edit.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,8 +40,12 @@ const router = createBrowserRouter([
             element: <Settings />
           },
           {
-            path: "create",
-            element: <Create />
+            path: "task/:id",
+            element: <Details />
+          },
+          {
+            path: "task/edit/:id",
+            element: <Edit />
           },
         ]
       }
