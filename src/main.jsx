@@ -8,6 +8,9 @@ import {
 } from "react-router-dom";
 import LogIn from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
+import Tasks from './pages/tasks.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import Settings from './pages/Settings.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,20 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />
+      },
+      {
+        path: "/tasks",
+        element: <Tasks />,
+        children:[
+          {
+            path: "",
+            element: <Dashboard />
+          },
+          {
+            path: "settings",
+            element: <Settings />
+          },
+        ]
       }
     ]
   },
