@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp.jsx';
 import Tasks from './pages/tasks.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Settings from './pages/Settings.jsx';
+import Create from './pages/Create.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
           {
             path: "settings",
             element: <Settings />
+          },
+          {
+            path: "create",
+            element: <Create />
           },
         ]
       }
