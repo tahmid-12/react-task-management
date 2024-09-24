@@ -1,18 +1,21 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'; // Import Provider from react-redux
+import store from './store'; // Import the store
 import App from './App.jsx'
 import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import LogIn from './pages/Login.jsx';
+import LogIn from './pages/LogIn.jsx';
 import SignUp from './pages/SignUp.jsx';
-import Tasks from './pages/tasks.jsx';
+// import Tasks from './pages/tasks.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Settings from './pages/Settings.jsx';
 import Details from './pages/Details.jsx';
 import Edit from './pages/Edit.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/tasks",
-        element: <Tasks />,
+        element: <PrivateRoute />,
         children:[
           {
             path: "",
@@ -56,6 +59,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>,
 )
