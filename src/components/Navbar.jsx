@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux'; 
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,11 +14,15 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from "react-router-dom";
+import { logout } from '../store/features/authSlice';
 
 const Navbar = () => {
 
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
+
+    const dispatch = useDispatch();  
+    const navigate = useNavigate(); 
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -31,6 +37,11 @@ const Navbar = () => {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
+    };
+
+    const handleLogout = () => {
+        dispatch(logout());  
+        navigate('/');  
     };
 
     return (
@@ -187,12 +198,10 @@ const Navbar = () => {
                                     </Link>
                                 </MenuItem>
 
-                                <MenuItem onClick={handleCloseNavMenu}>
-                                    <Link to="/tasks/settings" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                                <MenuItem onClick={handleLogout}>
                                         <Typography sx={{ textAlign: 'center', width: '100%' }}>
                                             Logout
                                         </Typography>
-                                    </Link>
                                 </MenuItem>
 
 
