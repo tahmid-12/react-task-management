@@ -14,19 +14,30 @@ import {
 } from '@mui/material';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { useDispatch } from 'react-redux';
+import { createTask } from '../store/features/taskSlice';
 
 // eslint-disable-next-line react/prop-types
 const CreateTaskDialog = ({ open, onClose }) => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState(null);
   const [priority, setPriority] = useState('');
   const [status, setStatus] = useState('');
 
-  const handleSubmit = () => {
-    // Handle form submission logic here
-    console.log({ title, description, dueDate, priority, status });
-    onClose(); // Close the dialog
+  const handleSubmit = async () => {
+    // Prepare the new task object
+    const newTask = {
+      title,
+      description,
+      due_date: dueDate ? dueDate.toISOString().slice(0, 19).replace('T', ' ') : null, // Format date for MySQL
+      priority,
+      status,
+    };
+
+    await dispatch(createTask(newTask)); 
+    onClose(); // Close the dialog after dispatching the action
   };
 
   return (
