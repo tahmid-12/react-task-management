@@ -36,6 +36,13 @@ export const updateTask = createAsyncThunk('tasks/updateTask', async (task) => {
   return response.data;
 });
 
+export const deleteTask = createAsyncThunk('tasks/deleteTask', async (id) => {
+  await axios.delete(`${API_URL}/tasks/${id}`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+  });
+  return id; 
+});
+
 // Task slice
 const taskSlice = createSlice({
   name: 'tasks',
@@ -99,6 +106,9 @@ const taskSlice = createSlice({
       .addCase(updateTask.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+      })
+      .addCase(deleteTask.fulfilled, (state, action) => {
+        state.tasks = state.tasks.filter((task) => task.id !== action.payload);
       });
   },
 });
