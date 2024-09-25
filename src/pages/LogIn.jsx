@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/features/authSlice';
-import { useNavigate } from "react-router-dom"; // Import useNavigate hook
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; // Import useNavigate hook
 
 const LogIn = () => {
   const [email, setEmail] = useState("");
@@ -68,9 +69,9 @@ const LogIn = () => {
             <span className="text-gray-700">Remember Me</span>
           </label>
 
-          <a href="#" className="text-blue-500 hover:underline mt-4 sm:mt-0">
+          <Link to="/signup" className="text-blue-500 hover:underline mt-4 sm:mt-0">
             Don’t have an account? Sign Up
-          </a>
+          </Link>
         </div>
       </form>
     </div>
