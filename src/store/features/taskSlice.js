@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:8000/api'; // Replace with your API endpoint
+const API_URL = 'http://127.0.0.1:8000/api'; 
 
 // Async thunk to create a new task
 export const createTask = createAsyncThunk('tasks/createTask', async (task) => {
@@ -17,7 +17,7 @@ export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async (_, { getSt
   const response = await axios.get(`${API_URL}/tasks`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  return response.data; // Ensure this returns an array of tasks
+  return response.data; 
 });
 
 // Async thunk to fetch task by ID
