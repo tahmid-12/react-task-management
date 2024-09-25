@@ -31,7 +31,7 @@ const CreateTaskDialog = ({ open, onClose }) => {
     const newTask = {
       title,
       description,
-      due_date: dueDate ? dueDate.toISOString().slice(0, 19).replace('T', ' ') : null, // Format date for MySQL
+      due_date: dueDate ? dueDate.toISOString().slice(0, 19).replace('T', ' ') : null, 
       priority,
       status,
     };
